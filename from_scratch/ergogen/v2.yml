@@ -1,0 +1,66 @@
+points:
+  zones:
+    matrix:
+      key.spread: u
+      key.padding: u
+      key.bind: 3
+      key.splay: -2
+      columns:
+        pinky:
+        ring:
+          key.stagger: 0.10u
+        middle:
+          key.stagger: 0.25u
+        index:
+          key.stagger: -0.25u
+        inner:
+          key.stagger: -0.2u
+          key.splay: 0
+      rows:
+        mod:
+        bottom:
+        home:
+        top:
+    thumb:
+      key.spread: u
+      key.splay: -15
+      key.origin: [-0.5u, -0.5u]
+      anchor:
+        ref: matrix_inner_mod
+        shift: [1.1u, 0.2u]
+        rotate: -15
+      columns:
+        tucky:
+          key.name: thumb_tucky
+        reachy:
+          key.name: thumb_reachy
+        fary:
+          key.name: thumb_fary
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      bound: true
+      asym: left
+      size: [u, u]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.8u,0.8u]
+        - ref: matrix_index_top
+          shift: [-u,1.1u]
+        - ref: matrix_inner_top
+          shift: [0.8u,0.8u]
+        - ref: thumb_fary
+          shift: [0.7u,0.6u]
+        - ref: thumb_fary
+          shift: [0.6u,-0.6u]
+        - ref: matrix_pinky_mod
+          shift: [-0.8u,-0.8u]
+      fillet: 2
+  double_check:
+    - name: board
+    - operation: subtract
+      name: raw
