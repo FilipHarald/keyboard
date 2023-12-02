@@ -1,41 +1,60 @@
 points:
   zones:
     matrix:
-      key.spread: u
+      anchor.shift: [100, -100] # for KiCAD preview
+      key.spread: u+1
       key.padding: u
       key.bind: 3
       key.splay: -2
       columns:
         pinky:
+          key.column_net: P14
         ring:
           key.stagger: 0.10u
+          key.column_net: P16
         middle:
           key.stagger: 0.25u
+          key.column_net: P10
         index:
           key.stagger: -0.25u
+          key.column_net: P7
         inner:
           key.stagger: -0.2u
           key.splay: 0
+          key.column_net: P8
       rows:
         mod:
+          row_net: P18
         bottom:
+          row_net: P19
         home:
+          row_net: P20
         top:
+          row_net: P21
     thumb:
       key.spread: u
       key.splay: -15
       key.origin: [-0.5u, -0.5u]
       anchor:
         ref: matrix_inner_mod
-        shift: [1.1u, 0.2u]
+        shift: [1.2u, 0.2u]
         rotate: -15
       columns:
         tucky:
-          key.name: thumb_tucky
+          key:
+            name: thumb_tucky
+            row_net: P6
+            column_net: P8
         reachy:
-          key.name: thumb_reachy
+          key:
+            name: thumb_reachy
+            row_net: P6
+            column_net: P7
         fary:
-          key.name: thumb_fary
+          key:
+            name: thumb_fary
+            row_net: P6
+            column_net: P10
 outlines:
   raw:
     - what: rectangle
@@ -52,7 +71,7 @@ outlines:
         - ref: matrix_index_top
           shift: [-u,1.1u]
         - ref: matrix_inner_top
-          shift: [0.8u,0.8u]
+          shift: [1.5u,0.8u]
         - ref: thumb_fary
           shift: [0.7u,0.6u]
         - ref: thumb_fary
@@ -60,7 +79,49 @@ outlines:
         - ref: matrix_pinky_mod
           shift: [-0.8u,-0.8u]
       fillet: 2
-  double_check:
+  does_it_fit:
     - name: board
     - operation: subtract
       name: raw
+pcbs:
+  gurka:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      switches:
+        what: mx
+        where: true
+        params:
+          reverse: true
+          keycaps: true
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      promicro:
+        what: promicro
+        where:
+          ref: matrix_inner_home
+          shift: [1.2u, 0.4u]
+          rotate: -80
+      trrs:
+        what: trrs
+        params:
+          A: GND
+          B: GND
+          C: P21
+          D: VCC
+          reverse: true
+          symmetric: true
+        where:
+          ref: matrix_inner_bottom
+          shift: [2u,0.1u]
+          rotate: -70
