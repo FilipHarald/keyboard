@@ -117,7 +117,7 @@ pcbs:
         params:
           A: GND
           B: GND
-          C: P21
+          C: P1
           D: VCC
           reverse: true
           symmetric: true
