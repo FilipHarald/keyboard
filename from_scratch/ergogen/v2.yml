@@ -37,8 +37,8 @@ points:
       key.origin: [-0.5u, -0.5u]
       anchor:
         ref: matrix_inner_mod
-        shift: [1.2u, 0.2u]
-        rotate: -15
+        shift: [1.2u, 0.4u]
+        rotate: -20
       columns:
         tucky:
           key:
@@ -71,11 +71,13 @@ outlines:
         - ref: matrix_index_top
           shift: [-u,1.1u]
         - ref: matrix_inner_top
-          shift: [1.5u,0.8u]
+          shift: [2u,0.8u]
         - ref: thumb_fary
           shift: [0.7u,0.6u]
         - ref: thumb_fary
           shift: [0.6u,-0.6u]
+        - ref: matrix_inner_mod
+          shift: [0.8u,-0.8u]
         - ref: matrix_pinky_mod
           shift: [-0.8u,-0.8u]
       fillet: 2
@@ -105,12 +107,12 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [0, -0.5u]
       promicro:
         what: promicro
         where:
           ref: matrix_inner_home
-          shift: [1.2u, 0.4u]
+          shift: [1.4u, 0.6u]
           rotate: -80
       trrs:
         what: trrs
@@ -123,5 +125,6 @@ pcbs:
           symmetric: true
         where:
           ref: matrix_inner_bottom
-          shift: [2u,0.1u]
+          shift: [2u,0.2u]
           rotate: -70
+
