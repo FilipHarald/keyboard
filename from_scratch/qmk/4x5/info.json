@@ -14,7 +14,7 @@
     },
     "diode_direction": "COL2ROW",
     "split": {
-        "soft_serial_pin": "GP2",
+        "soft_serial_pin": "GP3",
         "enabled": true
     },
     "processor": "RP2040",
